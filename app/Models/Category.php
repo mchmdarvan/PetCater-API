@@ -16,4 +16,9 @@ class Category extends Model
     protected $hidden = [
 
     ];
+
+    public function getPhotoAttribute($value)
+    {
+        return url('storage/' . $value);
+    }
 }

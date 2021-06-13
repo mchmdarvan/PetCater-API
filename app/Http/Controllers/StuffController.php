@@ -33,6 +33,7 @@ class StuffController extends Controller
     public function product()
     {
         $product = Product::paginate();
+        $product->load('galleries');
         return $this->paginate($product);
     }
 }
