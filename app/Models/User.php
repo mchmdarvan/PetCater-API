@@ -45,4 +45,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function getPhotoAttribute($value)
+    {
+        return url('storage/' . $value);
+    }
 }

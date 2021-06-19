@@ -19,7 +19,7 @@ class StuffController extends Controller
         $category = Category::findOrFail($id);
         $product = Product::where('categories_id', $category->id)->paginate();
 
-        $product->load('category');
+        $product->load('category', 'galleries');
 
         return $this->paginate($product);
     }

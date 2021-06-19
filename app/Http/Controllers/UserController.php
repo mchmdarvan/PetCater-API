@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use JWTAuth;
@@ -72,5 +73,23 @@ class UserController extends Controller
         }
 
         return response()->json(compact('user'));
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+
+        return $this->response($user);
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+
+        $item = Auth::user();
+
+        $item->update($data);
+
+        return $this->response($item);
     }
 }

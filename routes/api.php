@@ -29,4 +29,7 @@ Route::get('product/{id}', 'StuffController@showProduct')->name('show.products')
 Route::post('cart', 'CartController@postToCart')->name('add-to-cart')->middleware('jwt.verify');
 Route::get('cart', 'CartController@getCart')->name('get-cart')->middleware('jwt.verify');
 Route::get('transaction', 'TransactionController@getTransaction')->name('get-transaction')->middleware('jwt.verify');
+Route::get('transaction/{id}', 'TransactionController@getTransactionDetail')->name('get-transaction-detail')->middleware('jwt.verify');
 Route::post('transaction', 'CheckoutController@process')->name('process-checkout')->middleware('jwt.verify');
+Route::get('profile', 'UserController@profile')->middleware('jwt.verify');
+Route::post('user/update', 'UserController@update')->middleware('jwt.verify');
