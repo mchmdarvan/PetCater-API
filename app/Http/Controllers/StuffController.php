@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Transaction;
 
 class StuffController extends Controller
 {
@@ -35,5 +36,12 @@ class StuffController extends Controller
         $product = Product::paginate();
         $product->load('galleries');
         return $this->paginate($product);
+    }
+
+    public function totalTransaction()
+    {
+        $transaction = Transaction::where('transaction_status', 'SUCCESS')->orWhere('transaction_status', 'SHIPPING')->sum('total_price');
+
+        return $this->response($transaction);
     }
 }

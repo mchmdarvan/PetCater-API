@@ -33,3 +33,4 @@ Route::get('transaction/{id}', 'TransactionController@getTransactionDetail')->na
 Route::post('transaction', 'CheckoutController@process')->name('process-checkout')->middleware('jwt.verify');
 Route::get('profile', 'UserController@profile')->middleware('jwt.verify');
 Route::post('user/update', 'UserController@update')->middleware('jwt.verify');
+Route::get('total-transaction', 'StuffController@totalTransaction')->middleware('jwt.verify');
